@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Menu from "./Components/Menu";
+import ImageSlide from "./Components/ImageSlide";
+import slide from "./slideBanner";
+import Pages from "./Pages";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  componentWillMount() {
+    this.setState({ currentLocation: window.location.pathname });
+  }
+  render() {
+    return (
+      <div>
+        <ImageSlide images={slide.images} alts={slide.alts} refresh={5000} />
+        <Menu
+          logo="STARTPROjecten"
+          buttons={{
+            left: ["Home"],
+            right: ["Contact", "Ons verhaal", "Missie & Visie", "Projecten"]
+          }}
+          currentLocation={this.state.currentLocation}
+        />
+        <Pages currentLocation={this.state.currentLocation} />
+      </div>
+    );
+  }
+  componentDidMount() {
+    const interval = setInterval(() => {
+      const currentLocation = window.history.state
+        ? window.history.state.id
+        : window.location.pathname;
+      this.setState({ currentLocation });
+    }, 100);
+    this.setState({ interval });
+  }
+  componentWillUnmount() {
+    clearInterval(this.state.interval);
+  }
 }
-
-export default App;

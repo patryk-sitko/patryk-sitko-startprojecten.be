@@ -1,0 +1,16 @@
+.preview-panel .text-panel-group {
+  width: 100%;
+}
+.preview-panel {
+  height: 300px;
+  width: 25%;
+}
+.preview-panel .image-slide-container {
+  height: 300px;
+}
+.preview-panel .image-slide {
+  background-color: white;
+}
+.preview-panel .text-container {
+  border: none;
+}
