@@ -37,31 +37,31 @@ export default class Menu extends Component {
 
 // works until 542 width
 function MenuDesktop(props) {
-  return (
-    Object.entries(props.buttons)
-      .map(([side, buttons]) => {
-        return buttons.map(name => {
-          const id = name.split(" ").join("-");
-          const isCurrentButton = props.currentLocation.includes(id);
-          const className = isCurrentButton ? "current-button" : "";
-          return (
-            <button
-              // @ts-ignore
-              style={{ float: side }}
-              className={className}
-              disabled={isCurrentButton}
-              key={id}
-              id={id}
-              onClick={() => {
-                window.history.replaceState({ id }, name, `/${id}`);
-              }}
-            >
-              {name}
-            </button>
-          );
-        });
-      })
-      // @ts-ignore
-      .flat()
-  );
+  let menu = [];
+  Object.entries(props.buttons)
+    .map(([side, buttons]) => {
+      return buttons.map(name => {
+        const id = name.split(" ").join("-");
+        const isCurrentButton = props.currentLocation.includes(id);
+        const className = isCurrentButton ? "current-button" : "";
+        return (
+          <button
+            // @ts-ignore
+            style={{ float: side }}
+            className={className}
+            disabled={isCurrentButton}
+            key={id}
+            id={id}
+            onClick={() => {
+              window.history.replaceState({ id }, name, `/${id}`);
+            }}
+          >
+            {name}
+          </button>
+        );
+      });
+    })
+    .forEach(array => (menu = menu.concat(array)));
+
+  return menu;
 }
