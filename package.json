@@ -1,8 +1,8 @@
 {
-  "name": "patryk-sitko-startprojecten.be",
+  "name": "startprojecten.be",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://patryk-sitko.github.io/patryk-sitko-startprojecten.be",
+  "homepage": "https://patryksitko.github.io/startprojecten.be",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "react": "^16.8.6",
