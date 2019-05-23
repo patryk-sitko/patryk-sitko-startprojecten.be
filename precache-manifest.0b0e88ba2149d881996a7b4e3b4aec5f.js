@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "fc6dc7ec1b2ce2b37bf3123af0af4589",
+    "revision": "f1e12a4334d5b331ddeac9a43b735bdf",
     "url": "/patryk-sitko-startprojecten.be/index.html"
   },
   {
-    "revision": "3b56c202e5cfb229751a",
+    "revision": "6b439c2fb4ff8a56486b",
     "url": "/patryk-sitko-startprojecten.be/static/css/main.cedb2f06.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/patryk-sitko-startprojecten.be/static/js/2.5c2a23a1.chunk.js"
   },
   {
-    "revision": "3b56c202e5cfb229751a",
-    "url": "/patryk-sitko-startprojecten.be/static/js/main.0aef20d4.chunk.js"
+    "revision": "6b439c2fb4ff8a56486b",
+    "url": "/patryk-sitko-startprojecten.be/static/js/main.a7cfa1fa.chunk.js"
   },
   {
     "revision": "030208a6595b01954ed7",

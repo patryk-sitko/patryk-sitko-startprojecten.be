@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/patryk-sitko-startprojecten.be/precache-manifest.58aa1e182448246884403261e6500d49.js"
+  "/patryk-sitko-startprojecten.be/precache-manifest.0b0e88ba2149d881996a7b4e3b4aec5f.js"
 );
 
 self.addEventListener('message', (event) => {
