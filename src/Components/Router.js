@@ -20,6 +20,7 @@ export default function Router({ currentLocation }) {
           content="Pagina niet gevonden."
         />
       );
+    case "":
     case "/":
     case "/Home":
     case "Home":
