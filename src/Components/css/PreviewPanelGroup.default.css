@@ -1,0 +1,17 @@
+.preview-panel-group {
+  background-color: rgb(223, 145, 21);
+  /* border: 3px solid black; */
+  margin-left: 10%;
+  margin-right: 10%;
+  text-align: center;
+}
+.preview-panel-group .text-panel-group {
+  padding: 0;
+  margin: 0;
+}
+@media only screen and (max-width: 1300px) {
+  .preview-panel-group {
+    margin-left: 3%;
+    margin-right: 3%;
+  }
+}

@@ -1,9 +1,25 @@
+.preview-panel {
+  display: inline-block;
+  width: 31%;
+  margin: 0.7em;
+}
 .preview-panel .text-panel-group {
   width: 100%;
+  margin: 0;
+  padding-bottom: 0;
 }
-.preview-panel {
-  height: 300px;
-  width: 25%;
+.preview-panel button {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-size: 33px;
+  background-color: white;
+  border: 3px solid white;
+  border-top: 2px solid black;
+}
+.preview-panel button:hover {
+  border: 3px solid rgb(223, 145, 21);
+  border-top: 2px solid rgb(223, 145, 21);
 }
 .preview-panel .image-slide-container {
   height: 300px;
@@ -11,6 +27,20 @@
 .preview-panel .image-slide {
   background-color: white;
 }
-.preview-panel .text-container {
+.preview-panel .text-container p {
   border: none;
+  text-align: center;
+}
+.preview-panel .text-panel-group h1 {
+  margin-bottom: 0px;
+}
+@media only screen and (max-width: 1590px) {
+  .preview-panel {
+    width: 47%;
+  }
+}
+@media only screen and (max-width: 810px) {
+  .preview-panel {
+    width: 95%;
+  }
 }

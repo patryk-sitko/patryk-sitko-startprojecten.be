@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Menu from "./Components/Menu";
 import ImageSlide from "./Components/ImageSlide";
 import slide from "./slideBanner";
-import Pages from "./Pages";
+import Router from "./Components/Router";
 import "./App.css";
 
 export default class App extends Component {
@@ -21,7 +21,7 @@ export default class App extends Component {
           }}
           currentLocation={this.state.currentLocation}
         />
-        <Pages currentLocation={this.state.currentLocation} />
+        <Router currentLocation={this.state.currentLocation} />
       </div>
     );
   }
