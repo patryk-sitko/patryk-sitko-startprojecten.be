@@ -1,1 +1,1 @@
-[DEMO](https://PatrykSitko.github.io/patryk-sitko-startprojecten.be)
+[startprojecten.be](https://PatrykSitko.github.io/startprojecten.be)
