@@ -9,19 +9,8 @@ export default function Router({ currentLocation }) {
   console.log(currentLocation);
   switch (currentLocation) {
     default:
-      return (
-        <TextPanel
-          title={
-            <span>
-              "404"
-              <br />
-            </span>
-          }
-          content="Pagina niet gevonden."
-        />
-      );
-    case "":
-    case "/":
+      window.history.replaceState({ id: "Home" }, "Home", `/Home`);
+    // eslint-disable-next-line
     case "/Home":
     case "Home":
       return <Home />;
@@ -34,5 +23,18 @@ export default function Router({ currentLocation }) {
     case "/Ons-verhaal":
     case "Ons-verhaal":
       return <OnsVerhaal />;
+    case "/Contact":
+    case "Contact":
+      return (
+        <TextPanel
+          title={
+            <span>
+              Comming Soon...
+              <br />
+            </span>
+          }
+          content="Pagina onder Constructie"
+        />
+      );
   }
 }
