@@ -8,3 +8,7 @@ p {
 #missie-en-visie .text-panel-group h1 {
   color: blue;
 }
+button {
+  outline: none;
+  cursor: pointer;
+}

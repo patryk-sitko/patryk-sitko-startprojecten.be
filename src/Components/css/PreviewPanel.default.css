@@ -1,5 +1,5 @@
 .preview-panel {
-  display: inline-block;
+  float: left;
   width: 31%;
   margin: 0.7em;
 }
@@ -32,7 +32,8 @@
   text-align: center;
 }
 .preview-panel .text-panel-group h1 {
-  margin-bottom: 0px;
+  margin: 0px 0.5em;
+  font-size: 1.7em;
 }
 @media only screen and (max-width: 1590px) {
   .preview-panel {

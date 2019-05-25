@@ -6,17 +6,12 @@ export default class Menu extends Component {
   state = { anchorTop: false };
   render() {
     const { anchorTop } = this.state;
+    const { buttons, currentLocation } = this.props;
     return (
       <div id="menu-bar" className={"menu"}>
-        <MenuDesktop
-          buttons={this.props.buttons}
-          currentLocation={this.props.currentLocation}
-        />
+        <MenuDesktop buttons={buttons} currentLocation={currentLocation} />
         <div id="menu-bar-top" hidden={!anchorTop} className="menu anchor-top">
-          <MenuDesktop
-            buttons={this.props.buttons}
-            currentLocation={this.props.currentLocation}
-          />
+          <MenuDesktop buttons={buttons} currentLocation={currentLocation} />
         </div>
       </div>
     );

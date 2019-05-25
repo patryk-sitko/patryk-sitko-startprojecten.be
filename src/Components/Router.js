@@ -6,7 +6,7 @@ import MissieEnVisie from "./routes/MissieEnVisie";
 import OnsVerhaal from "./routes/OnsVerhaal";
 
 export default function Router({ currentLocation }) {
-  console.log(currentLocation);
+  // console.log(currentLocation);
   switch (currentLocation) {
     default:
       window.history.replaceState({ id: "Home" }, "Home", `/Home`);
