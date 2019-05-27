@@ -10,6 +10,12 @@ export default class Menu extends React.Component {
   render() {
     const { anchorTop } = this.state;
     const { style } = this.props;
+    if (
+      !style.width.includes("100%") ||
+      (this.state.boundingBox && this.state.boundingBox.y < 0 && anchorTop)
+    ) {
+      menuHandler.bind(this)();
+    }
     return (
       <div id="menu-bar" className={"menu"}>
         {MenuDesktop.bind(this)()}
@@ -25,24 +31,18 @@ export default class Menu extends React.Component {
     );
   }
   componentDidMount = () => {
-    addScrollListener.bind(this)();
+    window.addEventListener("scroll", menuHandler.bind(this));
   };
 }
-function addScrollListener() {
-  window.addEventListener(
-    "scroll",
-    function(event) {
-      const { anchorTop } = this.state;
-      const boundingBox = ReactDOM.findDOMNode(this).getBoundingClientRect();
-      if (boundingBox.y < 0 && !anchorTop) {
-        this.setState({ anchorTop: true });
-      } else if (boundingBox.y > 0 && anchorTop) {
-        this.setState({ anchorTop: false });
-      }
-    }.bind(this)
-  );
+function menuHandler(event) {
+  const { anchorTop } = this.state;
+  const boundingBox = ReactDOM.findDOMNode(this).getBoundingClientRect();
+  if (boundingBox.y < 0 && !anchorTop) {
+    this.setState({ anchorTop: true, boundingBox });
+  } else if (boundingBox.y > 0 && anchorTop) {
+    this.setState({ anchorTop: false, boundingBox });
+  }
 }
-
 // works until 542 width
 function MenuDesktop() {
   let menu = [];
