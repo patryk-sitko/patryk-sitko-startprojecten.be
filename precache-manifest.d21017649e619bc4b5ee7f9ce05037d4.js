@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "af2db20f5f7ecfb6e97fa00f949ad366",
+    "revision": "d7e34371a8c215d053827624c6f04882",
     "url": "/startprojecten.be/index.html"
   },
   {
-    "revision": "54b77ac94047206ff5c5",
+    "revision": "48d5adba82631e4b9eae",
     "url": "/startprojecten.be/static/css/main.849d5eb2.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/startprojecten.be/static/js/2.ec9d709e.chunk.js"
   },
   {
-    "revision": "54b77ac94047206ff5c5",
-    "url": "/startprojecten.be/static/js/main.2e52ebb1.chunk.js"
+    "revision": "48d5adba82631e4b9eae",
+    "url": "/startprojecten.be/static/js/main.edddb66e.chunk.js"
   },
   {
     "revision": "61f968a298a7112df320",
