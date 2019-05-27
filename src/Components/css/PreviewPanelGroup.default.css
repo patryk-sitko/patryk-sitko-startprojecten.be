@@ -1,5 +1,4 @@
 .preview-panel-group {
-  background-color: rgb(228, 227, 227);
   /* border: 3px solid black; */
   margin-left: 10%;
   margin-right: 10%;
@@ -7,11 +6,6 @@
 }
 .preview-panel-group .preview-panel {
   margin: 0;
-}
-.preview-panel-group #col-left .text-panel-group,
-.preview-panel-group #col-center .text-panel-group,
-.preview-panel-group #col-right .text-panel-group {
-  margin-bottom: 0.5em;
 }
 .preview-panel-group #col-left .preview-panel,
 .preview-panel-group #col-center .preview-panel,
@@ -21,19 +15,22 @@
 }
 .preview-panel-group #col-left {
   width: 32%;
-  float: left;
   margin: 0.3em;
+  display: inline-block;
+  vertical-align: top;
 }
 
 .preview-panel-group #col-center {
   width: 32%;
-  float: left;
-  margin: 0.3em;
+  margin: 0 0.3em;
+  display: inline-block;
+  vertical-align: top;
 }
 .preview-panel-group #col-right {
   width: 32%;
-  float: left;
-  margin: 0.3em;
+  margin: 0 0.3em;
+  display: inline-block;
+  vertical-align: top;
 }
 .preview-panel-group .text-panel-group {
   padding: 0;
@@ -42,7 +39,7 @@
   border-right: none;
   border-bottom: none;
 }
-@media only screen and (max-width: 1300px) {
+@media only screen and (max-width: 1400px) {
   .preview-panel-group {
     margin-left: 3%;
     margin-right: 3%;
@@ -53,7 +50,7 @@
     width: 48%;
   }
 }
-@media only screen and (max-width: 730px) {
+@media only screen and (max-width: 1050px) {
   .preview-panel-group #col-left,
   .preview-panel-group #col-center,
   .preview-panel-group #col-right {

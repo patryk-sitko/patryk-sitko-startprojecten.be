@@ -5,9 +5,9 @@ import Projecten from "./routes/Projecten";
 import MissieEnVisie from "./routes/MissieEnVisie";
 import OnsVerhaal from "./routes/OnsVerhaal";
 
-export default function Router({ currentLocation }) {
+export default function Router() {
   // console.log(currentLocation);
-  switch (currentLocation) {
+  switch (this.state.currentLocation) {
     default:
       window.history.replaceState({ id: "Home" }, "Home", `/Home`);
     // eslint-disable-next-line
@@ -16,7 +16,7 @@ export default function Router({ currentLocation }) {
       return <Home />;
     case "/Projecten":
     case "Projecten":
-      return <Projecten />;
+      return Projecten.bind(this)();
     case "/Missie-&-Visie":
     case "Missie-&-Visie":
       return <MissieEnVisie />;

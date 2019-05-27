@@ -6,26 +6,39 @@ import Router from "./Components/Router";
 import "./App.css";
 
 export default class App extends Component {
-  componentWillMount() {
-    this.setState({ currentLocation: window.location.pathname });
-  }
+  state = {
+    currentLocation: window.location.pathname,
+    app: { changeStyle: 0 }
+  };
   render() {
+    const style =
+      this.state.app.changeStyle > 0 &&
+      document.body.clientWidth > 1030 &&
+      this.state.currentLocation.includes("Projecten")
+        ? { float: "right", width: "60%" }
+        : { float: "inherit", width: "100%" };
+    if (
+      !this.state.currentLocation.includes("Projecten") &&
+      this.state.app.changeStyle > 0
+    ) {
+      this.setState({ app: { changeStyle: 0 } });
+    }
     return (
-      <div>
+      <div id="app" style={style}>
         <ImageSlide images={slide.images} alts={slide.alts} refresh={5000} />
         <Menu
-          logo="STARTPROjecten"
           buttons={{
             left: ["Home"],
             right: ["Contact", "Ons verhaal", "Missie & Visie", "Projecten"]
           }}
           currentLocation={this.state.currentLocation}
+          style={style}
         />
-        <Router currentLocation={this.state.currentLocation} />
+        {Router.bind(this)()}
       </div>
     );
   }
-  componentDidMount() {
+  componentDidMount = () => {
     const interval = setInterval(() => {
       const currentLocation = window.history.state
         ? window.history.state.id
@@ -33,7 +46,7 @@ export default class App extends Component {
       this.setState({ currentLocation });
     }, 100);
     this.setState({ interval });
-  }
+  };
   componentWillUnmount() {
     clearInterval(this.state.interval);
   }
