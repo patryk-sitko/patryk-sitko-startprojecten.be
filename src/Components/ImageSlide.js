@@ -84,7 +84,11 @@ export default class ImgSlide extends Component {
         }
       }, this.props.effects.fadeOnLoad);
     }
-    if (this.props.images && this.props.images.length > 1) {
+    if (
+      this.props.images &&
+      this.props.images.length > 1 &&
+      this.state.focused
+    ) {
       const changeImage = setInterval(() => {
         if (this.state.focused) {
           trackInterval.bind(this)("changeImage", changeImage);
@@ -98,54 +102,50 @@ export default class ImgSlide extends Component {
             }
           } else {
             const fadeOut = setInterval(() => {
-              if (this.state.focused) {
-                trackInterval.bind(this)("fadeOut", fadeOut);
-                let opacity = this.state.style.opacity;
-                if (opacity <= 0.3) {
-                  if (current < reset) {
-                    this.setState({
-                      current: 1 + current,
-                      opacity,
-                      intervals: clearIntervalNamed.bind(this)("fadeOut")
-                    });
-                  } else {
-                    this.setState({
-                      current: 0,
-                      opacity,
-                      intervals: clearIntervalNamed.bind(this)("fadeOut")
-                    });
-                  }
-                  const fadeIn = setInterval(() => {
-                    if (this.state.focused) {
-                      trackInterval.bind(this)("fadeIn", fadeIn);
-                      let opacity = this.state.style.opacity;
-                      if (opacity >= 1) {
-                        if (current < reset) {
-                          this.setState({
-                            currentBackground: 1 + currentBackground,
-                            opacity,
-                            intervals: clearIntervalNamed.bind(this)("fadeIn")
-                          });
-                        } else {
-                          this.setState({
-                            currentBackground: 0,
-                            opacity,
-                            intervals: clearIntervalNamed.bind(this)("fadeIn")
-                          });
-                        }
-                        // this.setState({ currentBackground: 1 + current });
-                      } else {
-                        this.setState({
-                          style: { opacity: opacity + 0.01 }
-                        });
-                      }
-                    }
-                  }, this.props.effects.fadeTransision);
+              trackInterval.bind(this)("fadeOut", fadeOut);
+              let opacity = this.state.style.opacity;
+              if (opacity <= 0.3) {
+                if (current < reset) {
+                  this.setState({
+                    current: 1 + current,
+                    opacity,
+                    intervals: clearIntervalNamed.bind(this)("fadeOut")
+                  });
                 } else {
                   this.setState({
-                    style: { opacity: opacity - 0.01 }
+                    current: 0,
+                    opacity,
+                    intervals: clearIntervalNamed.bind(this)("fadeOut")
                   });
                 }
+                const fadeIn = setInterval(() => {
+                  trackInterval.bind(this)("fadeIn", fadeIn);
+                  let opacity = this.state.style.opacity;
+                  if (opacity >= 1) {
+                    if (current < reset) {
+                      this.setState({
+                        currentBackground: 1 + currentBackground,
+                        opacity,
+                        intervals: clearIntervalNamed.bind(this)("fadeIn")
+                      });
+                    } else {
+                      this.setState({
+                        currentBackground: 0,
+                        opacity,
+                        intervals: clearIntervalNamed.bind(this)("fadeIn")
+                      });
+                    }
+                    // this.setState({ currentBackground: 1 + current });
+                  } else {
+                    this.setState({
+                      style: { opacity: opacity + 0.01 }
+                    });
+                  }
+                }, this.props.effects.fadeTransision);
+              } else {
+                this.setState({
+                  style: { opacity: opacity - 0.01 }
+                });
               }
             }, this.props.effects.fadeTransision);
           }
@@ -166,13 +166,15 @@ function clearAllIntervals() {
   }
 }
 function clearIntervalNamed(intervalName) {
-  return this.state.intervals.map(interval => {
-    if (interval.name === intervalName) {
-      clearInterval(interval.id);
-      interval.cleared = true;
-    }
-    return interval;
-  });
+  return this.state.intervals
+    .map(interval => {
+      if (interval.name === intervalName) {
+        clearInterval(interval.id);
+        interval.cleared = true;
+      }
+      return interval;
+    })
+    .filter(interval => interval.cleared);
 }
 function trackInterval(name, id) {
   this.setState({
