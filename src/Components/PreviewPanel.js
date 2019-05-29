@@ -24,7 +24,32 @@ export default class PreviewPanel extends Component {
       return PreviewPanelDesktop.bind(this)();
     }
   }
+  componentDidUpdate() {
+    const {
+      state: {
+        app: { changeStyle }
+      },
+      setState
+    } = this.props;
+    const { showMore, showingMore } = this.state;
+    if (showMore && setState && !showingMore) {
+      this.setState({ showingMore: true });
+      setState({
+        app: {
+          changeStyle: 1 + changeStyle
+        }
+      });
+    } else if (!showMore && showingMore) {
+      this.setState({ showingMore: false });
+      setState({
+        app: {
+          changeStyle: changeStyle - 1
+        }
+      });
+    }
+  }
 }
+
 function mountEventListener() {
   window.addEventListener(
     "resize",
@@ -49,34 +74,21 @@ function PreviewPanelMobile() {
     button,
     buttonGo,
     buttonShow,
-    state: {
-      app: { changeStyle }
-    },
-    setState
+    effects
   } = this.props;
-  const { showMore, showingMore } = this.state;
-  if (showMore && setState && !showingMore) {
-    this.setState({ showingMore: true });
-    setState({
-      app: {
-        changeStyle: 1 + changeStyle
-      }
-    });
-  } else if (!showMore && showingMore) {
-    this.setState({ showingMore: false });
-    setState({
-      app: {
-        changeStyle: changeStyle - 1
-      }
-    });
-  }
+  const { showMore } = this.state;
   const extraContent = showMore ? buttonShow : "";
   return (
     <div className="preview-panel" key={title}>
       <TextPanelGroup title={title}>
-        <ImageSlide images={images} alts={alts} refresh={refresh} />
+        <ImageSlide
+          images={images}
+          alts={alts}
+          refresh={refresh}
+          effects={effects}
+        />
         <TextPanel title="" content={content} />
-        <TextPanel title="" content={extraContent} />
+        {extraContent}
       </TextPanelGroup>
       {Button.bind(this)({
         button,
@@ -99,38 +111,25 @@ function PreviewPanelDesktop() {
     button,
     buttonGo,
     buttonShow,
-    state: {
-      app: { changeStyle }
-    },
-    setState
+    effects
   } = this.props;
-  const { showMore, showingMore } = this.state;
+  const { showMore } = this.state;
   const extraContent = showMore ? buttonShow : "";
   const className = showMore ? "preview-panel anchor-left" : "preview-panel";
   const style = showMore ? { width: "40%" } : {};
-  if (showMore && setState && !showingMore) {
-    this.setState({ showingMore: true });
-    setState({
-      app: {
-        changeStyle: 1 + changeStyle
-      }
-    });
-  } else if (!showMore && showingMore) {
-    this.setState({ showingMore: false });
-    setState({
-      app: {
-        changeStyle: changeStyle - 1
-      }
-    });
-  }
   return (
     <div className={className} style={style}>
       {className.includes("anchor") ? <h1>{title}</h1> : ""}
       <div className="preview-panel-scroll">
         <TextPanelGroup title={!className.includes("anchor") ? title : ""}>
-          <ImageSlide images={images} alts={alts} refresh={refresh} />
+          <ImageSlide
+            images={images}
+            alts={alts}
+            refresh={refresh}
+            effects={effects}
+          />
           <TextPanel title="" content={content} />
-          <TextPanel title="" content={extraContent} />
+          {extraContent}
         </TextPanelGroup>
       </div>
       {/* {(changeStyle > 0 && !className.includes("anchor")) || */}

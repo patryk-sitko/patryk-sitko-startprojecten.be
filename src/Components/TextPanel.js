@@ -6,7 +6,7 @@ export default function TextPanel(props) {
   return (
     <div className="text-container" key={title + content}>
       <p>
-        <b>{title}</b>
+        {title ? <b>{title}</b> : ""}
         {content}
       </p>
     </div>

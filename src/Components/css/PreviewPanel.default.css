@@ -52,6 +52,9 @@
   border: none;
   text-align: center;
 }
+.preview-panel .text-container b {
+  float: left;
+}
 .preview-panel h1 {
   height: 15%;
   margin: 0px;

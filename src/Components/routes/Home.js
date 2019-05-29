@@ -14,7 +14,12 @@ export default function Home() {
       />
       <TextPanelGroup title="Inhoudelijke en zakelijke coördinatie van STARTPROjecten:">
         <div id="left">
-          <ImageSlide images={slide.images} alts={slide.alts} refresh={3000} />
+          <ImageSlide
+            images={slide.images}
+            alts={slide.alts}
+            refresh={3000}
+            effects={{fadeOnLoad:60,fadeTransision:60}}
+          />
         </div>
         <div id="right">
           <TextPanel

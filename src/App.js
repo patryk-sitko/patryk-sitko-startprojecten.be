@@ -24,8 +24,17 @@ export default class App extends Component {
       this.setState({ app: { changeStyle: 0 } });
     }
     return (
-      <div id="app" style={style}>
-        <ImageSlide images={slide.images} alts={slide.alts} refresh={5000} />
+      <div
+        id="app"
+        // @ts-ignore
+        style={style}
+      >
+        <ImageSlide
+          images={slide.images}
+          alts={slide.alts}
+          refresh={5000}
+          effects={{ fadeOnLoad: 60, fadeTransision: 60 }}
+        />
         <Menu
           buttons={{
             left: ["Home"],

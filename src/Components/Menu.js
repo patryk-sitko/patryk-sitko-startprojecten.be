@@ -10,12 +10,6 @@ export default class Menu extends React.Component {
   render() {
     const { anchorTop } = this.state;
     const { style } = this.props;
-    if (
-      !style.width.includes("100%") ||
-      (this.state.boundingBox && this.state.boundingBox.y < 0 && anchorTop)
-    ) {
-      menuHandler.bind(this)();
-    }
     return (
       <div id="menu-bar" className={"menu"}>
         {MenuDesktop.bind(this)()}
@@ -33,9 +27,20 @@ export default class Menu extends React.Component {
   componentDidMount = () => {
     window.addEventListener("scroll", menuHandler.bind(this));
   };
+  componentDidUpdate = () => {
+    const { anchorTop } = this.state;
+    const { style } = this.props;
+    if (
+      !style.width.includes("100%") ||
+      (this.state.boundingBox && this.state.boundingBox.y < 0 && anchorTop)
+    ) {
+      menuHandler.bind(this)();
+    }
+  };
 }
 function menuHandler(event) {
   const { anchorTop } = this.state;
+  // @ts-ignore
   const boundingBox = ReactDOM.findDOMNode(this).getBoundingClientRect();
   if (boundingBox.y < 0 && !anchorTop) {
     this.setState({ anchorTop: true, boundingBox });

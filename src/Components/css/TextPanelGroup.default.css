@@ -65,6 +65,7 @@
   width: 100%;
   margin: 0px;
 }
+.text-panel-group p,
 .text-panel-group .text-container p {
   border: 3px solid black;
   background-color: white;
@@ -74,6 +75,10 @@
   text-align: left;
   padding: 5px;
   font-size: 22px;
+}
+.text-panel-group p {
+  text-align: center;
+  border: none;
 }
 .text-panel-group .text-container b {
   color: black;
