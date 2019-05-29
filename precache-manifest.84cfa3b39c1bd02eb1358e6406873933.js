@@ -1,18 +1,18 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f31db2c1a95bde7ed045aa273b1fc2f3",
+    "revision": "e85d2cb4c16d5c8e466455446eb21bcc",
     "url": "/startprojecten.be/index.html"
   },
   {
-    "revision": "bde96a0bb3e4ddd7b493",
-    "url": "/startprojecten.be/static/css/main.79123cca.chunk.css"
+    "revision": "76911e35d9645066a050",
+    "url": "/startprojecten.be/static/css/main.e0289975.chunk.css"
   },
   {
     "revision": "18cf788d1d4af4dd1ed1",
     "url": "/startprojecten.be/static/js/2.19c2e4a3.chunk.js"
   },
   {
-    "revision": "bde96a0bb3e4ddd7b493",
+    "revision": "76911e35d9645066a050",
     "url": "/startprojecten.be/static/js/main.cd6c38ca.chunk.js"
   },
   {
@@ -22,6 +22,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "88902cfffcb4cc3de126a30e40127f91",
     "url": "/startprojecten.be/static/media/borderimage.88902cff.jpg"
+  },
+  {
+    "revision": "d478db4af06dedf286ecd335032a3f0f",
+    "url": "/startprojecten.be/static/media/default-cursor.d478db4a.png"
   },
   {
     "revision": "f6027e2f6121b84ff033b4ebab261900",
@@ -46,6 +50,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "b4529b5bdb659e63d42ee4dd20d71d86",
     "url": "/startprojecten.be/static/media/mozaiek.b4529b5b.png"
+  },
+  {
+    "revision": "19cc1e743383d98ea315530451b7095d",
+    "url": "/startprojecten.be/static/media/pointer-cursor.19cc1e74.png"
   },
   {
     "revision": "59eb2c0e8bd11479e48b0f3efd4a3441",
