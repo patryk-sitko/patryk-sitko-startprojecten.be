@@ -6,7 +6,7 @@ import PreviewPanelGroup from "../PreviewPanelGroup";
 import slide, { images, alts } from "../../images/slides/projecten";
 
 export default function Projecten() {
-  console.log(images)
+  console.log(images);
   return (
     <div id="Projecten">
       <TextPanel
@@ -22,7 +22,7 @@ export default function Projecten() {
             state={{ ...this.state }}
             images={images.scholen1}
             alts={alts.scholen1}
-            effects={{ fadeOnLoad: 50 }}
+            effects={{ fadeOnLoad: 10 }}
             title="Onderhouden van netwerken en IT infrastructuur van scholen"
             content="Ondersteuning aanbieden aan scholen om hun IT infrastructuur te onderhouden en uit te breiden (computers, laptops, media-apparatuur), netwerken te onderhouden en een helpdesk voor leerkrachten en personeel uit te bouwen."
             button={["Lees Meer", "Lees Minder"]}
@@ -99,7 +99,7 @@ export default function Projecten() {
             state={{ ...this.state }}
             images={images.werkervaring1}
             alts={alts.werkervaring1}
-            effects={{ fadeOnLoad: 50 }}
+            effects={{ fadeOnLoad: 10 }}
             title="Mogelijkheden stage & werk in werkervaringsprojecten, deeleconomie en sociale economie in Brussel"
             content="Aan schoolverlaters en jongeren een overzicht en inkijk geven in de mogelijkheden om stage en/of werk te vinden in de verschillende Brusselse (sociaal) economie-projecten."
             button={["Lees Meer", "Lees Minder"]}
@@ -145,7 +145,7 @@ export default function Projecten() {
             state={{ ...this.state }}
             images={images.schoolverlaters1}
             alts={alts.schoolverlaters1}
-            effects={{ fadeOnLoad: 50 }}
+            effects={{ fadeOnLoad: 10 }}
             title="Acties opzetten om schoolverlaters te ondersteunen"
             content="De school achter de rug maar geen stage of werk? Wij wensen stappen te zetten naar een netwerk van mogelijkheden voor Brusselse schoolverlaters."
             button={["Lees Meer", "Lees Minder"]}
@@ -183,7 +183,7 @@ export default function Projecten() {
             state={{ ...this.state }}
             images={images.borderimage}
             alts={alts.borderimage}
-            effects={{ fadeOnLoad: 50 }}
+            effects={{ fadeOnLoad: 10 }}
             title="Onderzoek verrichten naar een mogelijke samenwerking met Brusselse actoren"
             content="
   Om uitval van jongeren, die stappen zetten naar de middenjury, te voorkomen en de werking te versterken van de organisaties die Brusselse jongeren begeleiden naar de examencommissie (middenjury)."
@@ -226,7 +226,7 @@ Om uitval van deelnemers aan dit traject naar de middenjury te verminderen, zal 
             state={{ ...this.state }}
             images={images.robot1}
             alts={alts.robot1}
-            effects={{ fadeOnLoad: 50 }}
+            effects={{ fadeOnLoad: 10 }}
             title="Opstarten van een Fablab - The IT Garage"
             content="De activiteitsdomeinen van de IT Garage zijn: 3D printing, Robotprogrammatie en Virtual Reality."
             button={["Lees Meer", "Lees Minder"]}

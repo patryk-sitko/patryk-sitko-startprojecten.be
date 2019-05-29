@@ -18,7 +18,7 @@ export default function Home() {
             images={images.mozaiek}
             alts={alts.mozaiek}
             refresh={3000}
-            effects={{ fadeOnLoad: 10 }}
+            effects={{ fadeOnLoad: 25 }}
           />
         </div>
         <div id="right">

@@ -104,7 +104,7 @@ export default function OnsVerhaal() {
             images={[borderimage]}
             alts={["borderimage"]}
             refresh={3000}
-            effects={{ fadeOnLoad: 10, fadeTransision: 10 }}
+            effects={{ fadeOnLoad: 25 }}
           />
         </div>
       </TextPanelGroup>
