@@ -36,7 +36,6 @@
   margin: 0 0 0 0;
   padding: 0 0 0 0;
   width: 100%;
-  height: 30em;
   text-align: center;
   background-color: white;
 }
@@ -46,12 +45,7 @@
 .text-panel-group #right .image-slide {
   margin: 0 0 0 0;
   padding: 0 0 0 0;
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
   visibility: visible;
-  border: 3px solid black;
-  border-radius: 50%;
 }
 .text-panel-group h1 {
   text-align: center;

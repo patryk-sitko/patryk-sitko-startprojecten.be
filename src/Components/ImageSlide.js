@@ -17,24 +17,30 @@ export default class ImgSlide extends Component {
     let { style } = this.state;
     let image;
     let alt;
-    if(images.constructor.name !== 'Array'){
-image = images;
-    }else {image = images[current];}
-    if(alts.constructor.name !== 'Array'){
-alt = alts;
-    }else {alt = alts[current];}
-    if (images.length > 1) {
+    if (images.constructor.name !== "Array") {
+      image = images;
+    } else {
+      image = images[current];
       const imageBackground =
         images[currentBackground ? currentBackground : current];
       style = {
+        objectFit: "contain",
         backgroundImage: `url(${imageBackground})`,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "contain",
-        backgroundPosition: "center",
         textAlign: "center",
         ...style
       };
     }
+    if (alts.constructor.name !== "Array") {
+      alt = alts;
+    } else {
+      alt = alts[current];
+    }
+    style = {
+      backgroundSize: "contain",
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "center",
+      ...style
+    };
     return (
       <div className="image-slide-container" style={style}>
         <img
@@ -116,7 +122,7 @@ alt = alts;
     }
   }
   componentWillUnmount() {
-    if (this.props.images&&this.props.images.length > 1) {
+    if (this.props.images && this.props.images.length > 1) {
       clearInterval(this.state.interval_changeImage);
     }
   }
