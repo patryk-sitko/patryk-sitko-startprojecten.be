@@ -1,18 +1,18 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e85d2cb4c16d5c8e466455446eb21bcc",
+    "revision": "085e8ee0a12956c24a5d87c363330f5a",
     "url": "/startprojecten.be/index.html"
   },
   {
-    "revision": "76911e35d9645066a050",
-    "url": "/startprojecten.be/static/css/main.e0289975.chunk.css"
+    "revision": "07b2297d61fe77810848",
+    "url": "/startprojecten.be/static/css/main.cfa295ff.chunk.css"
   },
   {
     "revision": "18cf788d1d4af4dd1ed1",
     "url": "/startprojecten.be/static/js/2.19c2e4a3.chunk.js"
   },
   {
-    "revision": "76911e35d9645066a050",
+    "revision": "07b2297d61fe77810848",
     "url": "/startprojecten.be/static/js/main.cd6c38ca.chunk.js"
   },
   {
