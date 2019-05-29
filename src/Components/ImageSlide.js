@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./css/ImageSlide.default.css";
 export default class ImgSlide extends Component {
   state = {
+    intervals: [],
     current: 0,
     currentBackground: 0,
     style: { opacity: 1.0 }
@@ -59,11 +60,14 @@ export default class ImgSlide extends Component {
       this.props.effects.fadeOnLoad &&
       !this.state.fadedOnLoad
     ) {
-      const interval_fadeOnLoad = setInterval(() => {
+      const fadeOnLoad = setInterval(() => {
+        trackInterval.bind(this)("fadeOnLoad", fadeOnLoad);
         let opacity = this.state.style.opacity;
         if (opacity > 1) {
-          this.setState({ fadedOnLoad: true });
-          clearInterval(interval_fadeOnLoad);
+          this.setState({
+            fadedOnLoad: true,
+            intervals: clearIntervalNamed.bind(this)("fadeOnLoad")
+          });
         } else {
           this.setState({
             style: { opacity: opacity + 0.1 }
@@ -72,7 +76,8 @@ export default class ImgSlide extends Component {
       }, this.props.effects.fadeOnLoad);
     }
     if (this.props.images && this.props.images.length > 1) {
-      const interval_changeImage = setInterval(() => {
+      const changeImage = setInterval(() => {
+        trackInterval.bind(this)("changeImage", changeImage);
         const { current, currentBackground } = this.state;
         const reset = this.props.images.length - 1;
         if (!this.props.effects || !this.props.effects.fadeTransision) {
@@ -83,47 +88,79 @@ export default class ImgSlide extends Component {
           }
         } else {
           const fadeOut = setInterval(() => {
+            trackInterval.bind(this)("fadeOut", fadeOut);
             let opacity = this.state.style.opacity;
             if (opacity <= 0.4) {
               if (current < reset) {
-                this.setState({ current: 1 + current, opacity });
+                this.setState({
+                  current: 1 + current,
+                  opacity,
+                  intervals: clearIntervalNamed.bind(this)("fadeOut")
+                });
               } else {
-                this.setState({ current: 0, opacity });
+                this.setState({
+                  current: 0,
+                  opacity,
+                  intervals: clearIntervalNamed.bind(this)("fadeOut")
+                });
               }
-              clearInterval(fadeOut);
               const fadeIn = setInterval(() => {
+                trackInterval.bind(this)("fadeIn", fadeIn);
                 let opacity = this.state.style.opacity;
                 if (opacity >= 1) {
                   if (current < reset) {
                     this.setState({
                       currentBackground: 1 + currentBackground,
-                      opacity
+                      opacity,
+                      intervals: clearIntervalNamed.bind(this)("fadeIn")
                     });
                   } else {
-                    this.setState({ currentBackground: 0, opacity });
+                    this.setState({
+                      currentBackground: 0,
+                      opacity,
+                      intervals: clearIntervalNamed.bind(this)("fadeIn")
+                    });
                   }
-                  this.setState({ currentBackground: 1 + current });
-                  clearInterval(fadeIn);
                 } else {
                   this.setState({
-                    style: { opacity: opacity + 0.1 }
+                    style: { opacity: opacity + 0.01 }
                   });
                 }
               }, this.props.effects.fadeTransision);
             } else {
               this.setState({
-                style: { opacity: opacity - 0.1 }
+                style: { opacity: opacity - 0.01 }
               });
             }
           }, this.props.effects.fadeTransision);
         }
       }, this.props.refresh);
-      this.setState({ interval_changeImage });
     }
   }
   componentWillUnmount() {
     if (this.props.images && this.props.images.length > 1) {
-      clearInterval(this.state.interval_changeImage);
+      this.state.intervals.forEach(
+        interval => !interval.cleared && clearInterval(interval.id)
+      );
+      this.setState({ intervals: [] });
     }
   }
+}
+function clearIntervalNamed(intervalName) {
+  return this.state.intervals.map(interval => {
+    if (interval.name === intervalName) {
+      clearInterval(interval.id);
+      interval.cleared = true;
+    }
+    return interval;
+  });
+}
+function trackInterval(name, id) {
+  this.setState({
+    intervals: this.state.intervals.concat({
+      name,
+      id,
+      cleared: false
+    })
+  });
 }

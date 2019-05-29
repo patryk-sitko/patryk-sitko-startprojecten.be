@@ -33,7 +33,7 @@ export default class App extends Component {
           images={slide.images}
           alts={slide.alts}
           refresh={5000}
-          effects={{ fadeOnLoad: 60, fadeTransision: 60 }}
+          effects={{ fadeOnLoad: 10, fadeTransision: 10 }}
         />
         <Menu
           buttons={{

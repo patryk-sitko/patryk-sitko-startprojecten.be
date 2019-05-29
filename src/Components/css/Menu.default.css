@@ -3,6 +3,7 @@
   float: left;
   margin-bottom: 1%;
   background-color: black;
+  z-index: 999;
 }
 .anchor-top {
   top: 0px;

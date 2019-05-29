@@ -2,7 +2,7 @@ import React from "react";
 import TextPanelGroup from "../TextPanelGroup";
 import ImageSlide from "../ImageSlide";
 import TextPanel from "../TextPanel";
-import slide from "../../images/slides/home";
+import { images, alts } from "../../images/slides/home";
 
 export default function Home() {
   return (
@@ -15,10 +15,10 @@ export default function Home() {
       <TextPanelGroup title="Inhoudelijke en zakelijke coördinatie van STARTPROjecten:">
         <div id="left">
           <ImageSlide
-            images={slide.images}
-            alts={slide.alts}
+            images={images.mozaiek}
+            alts={alts.mozaiek}
             refresh={3000}
-            effects={{fadeOnLoad:60,fadeTransision:60}}
+            effects={{ fadeOnLoad: 10 }}
           />
         </div>
         <div id="right">
