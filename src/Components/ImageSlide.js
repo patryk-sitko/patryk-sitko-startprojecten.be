@@ -178,7 +178,7 @@ function changeBackgroundImage(state = {}) {
 function imageFadeOut(state = {}) {
   let opacity = this.state.style.opacity;
   if (this.state.focused) {
-    if (opacity < 0.4) {
+    if (opacity < 0.3) {
       this.setState({
         ...state
       });
@@ -192,7 +192,7 @@ function imageFadeOut(state = {}) {
 function imageFadeIn(state = {}) {
   let opacity = this.state.style.opacity;
   if (this.state.focused) {
-    if (opacity > 0.9) {
+    if (opacity > 1) {
       this.setState({
         ...state
       });

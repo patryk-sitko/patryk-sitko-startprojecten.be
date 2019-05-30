@@ -17,12 +17,6 @@ export default class App extends Component {
       this.state.currentLocation.includes("Projecten")
         ? { float: "right", width: "60%" }
         : { float: "inherit", width: "100%" };
-    if (
-      !this.state.currentLocation.includes("Projecten") &&
-      this.state.app.changeStyle > 0
-    ) {
-      this.setState({ app: { changeStyle: 0 } });
-    }
     return (
       <div
         id="app"
@@ -33,7 +27,7 @@ export default class App extends Component {
           images={slide.images}
           alts={slide.alts}
           refresh={5000}
-          effects={{ fadeOnLoad: 50, fadeTransition:10 }}
+          effects={{ fadeOnLoad: 50, fadeTransition: 10 }}
         />
         <Menu
           buttons={{
@@ -56,6 +50,14 @@ export default class App extends Component {
     }, 100);
     this.setState({ interval });
   };
+  componentDidUpdate() {
+    if (
+      !this.state.currentLocation.includes("Projecten") &&
+      this.state.app.changeStyle > 0
+    ) {
+      this.setState({ app: { changeStyle: 0 } });
+    }
+  }
   componentWillUnmount() {
     clearInterval(this.state.interval);
   }
