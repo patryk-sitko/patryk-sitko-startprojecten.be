@@ -6,7 +6,6 @@ import PreviewPanelGroup from "../PreviewPanelGroup";
 import slide, { images, alts } from "../../images/slides/projecten";
 
 export default function Projecten() {
-  console.log(images);
   return (
     <div id="Projecten">
       <TextPanel
@@ -274,7 +273,7 @@ Alle ervaring en kennis binnen de IT Garage wordt ook aangeboden aan scholen die
             images={slide.images}
             alts={slide.alts}
             refresh={3000}
-            effects={{ fadeOnLoad: 10, fadeTransision: 10 }}
+            effects={{ fadeOnLoad: 10, fadeTransition: 10 }}
             title="Samenwerken? Waarom niet!"
             content="Wenst u een samenwerking met STARTPROjecten? 
   Neem contact met ons op."
