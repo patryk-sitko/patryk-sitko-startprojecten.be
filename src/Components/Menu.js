@@ -45,7 +45,6 @@ function menuHandler(event) {
   if (boundingBox.y < 0 && !anchorTop && !hideMenu) {
     this.setState({
       anchorTop: true,
-      lastKnownScrollPosition: currentScrollPosition,
       boundingBox
     });
   } else if ((boundingBox.y > 0 && anchorTop) || hideMenu) {
