@@ -32,7 +32,7 @@ export default class Menu extends React.Component {
     const { anchorTop } = this.state;
     const { style } = this.props;
     if (!style.width.includes("100%") && anchorTop) {
-      menuHandler.bind(this)();
+      // menuHandler.bind(this)();
     }
   };
 }
@@ -42,14 +42,15 @@ function menuHandler(event) {
   const hideMenu = currentScrollPosition > lastKnownScrollPosition;
   // @ts-ignore
   const boundingBox = ReactDOM.findDOMNode(this).getBoundingClientRect();
-  if (boundingBox.y < 0 && !anchorTop && !hideMenu) {
-    this.setState({
-      anchorTop: true,
-      boundingBox
-    });
-  } else if ((boundingBox.y > 0 && anchorTop) || hideMenu) {
+  if ((boundingBox.y > 0 && anchorTop) || hideMenu) {
     this.setState({
       anchorTop: false,
+      lastKnownScrollPosition: currentScrollPosition,
+      boundingBox
+    });
+  } else if (boundingBox.y < 0 && !anchorTop && !hideMenu) {
+    this.setState({
+      anchorTop: true,
       lastKnownScrollPosition: currentScrollPosition,
       boundingBox
     });
