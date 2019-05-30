@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/startprojecten.be/static/css/main.cfa295ff.chunk.css",
-    "main.js": "/startprojecten.be/static/js/main.36b1627c.chunk.js",
-    "main.js.map": "/startprojecten.be/static/js/main.36b1627c.chunk.js.map",
+    "main.css": "/startprojecten.be/static/css/main.e8274e93.chunk.css",
+    "main.js": "/startprojecten.be/static/js/main.c551f3d8.chunk.js",
+    "main.js.map": "/startprojecten.be/static/js/main.c551f3d8.chunk.js.map",
     "runtime~main.js": "/startprojecten.be/static/js/runtime~main.3c69e50a.js",
     "runtime~main.js.map": "/startprojecten.be/static/js/runtime~main.3c69e50a.js.map",
-    "static/js/2.f24874c9.chunk.js": "/startprojecten.be/static/js/2.f24874c9.chunk.js",
-    "static/js/2.f24874c9.chunk.js.map": "/startprojecten.be/static/js/2.f24874c9.chunk.js.map",
+    "static/js/2.b50e745a.chunk.js": "/startprojecten.be/static/js/2.b50e745a.chunk.js",
+    "static/js/2.b50e745a.chunk.js.map": "/startprojecten.be/static/js/2.b50e745a.chunk.js.map",
     "index.html": "/startprojecten.be/index.html",
-    "precache-manifest.a1c6258cce3b253dcd090316779ef56d.js": "/startprojecten.be/precache-manifest.a1c6258cce3b253dcd090316779ef56d.js",
+    "precache-manifest.85ceb4dc413e4d6c70fb7d341ccf7884.js": "/startprojecten.be/precache-manifest.85ceb4dc413e4d6c70fb7d341ccf7884.js",
     "service-worker.js": "/startprojecten.be/service-worker.js",
-    "static/css/main.cfa295ff.chunk.css.map": "/startprojecten.be/static/css/main.cfa295ff.chunk.css.map",
+    "static/css/main.e8274e93.chunk.css.map": "/startprojecten.be/static/css/main.e8274e93.chunk.css.map",
     "static/media/borderimage.jpg": "/startprojecten.be/static/media/borderimage.88902cff.jpg",
     "static/media/index.css": "/startprojecten.be/static/media/pointer-cursor.19cc1e74.png",
     "static/media/kleine-head3.jpg": "/startprojecten.be/static/media/kleine-head3.f6027e2f.jpg",
@@ -22,6 +22,7 @@
     "static/media/robot1.jpg": "/startprojecten.be/static/media/robot1.59eb2c0e.jpg",
     "static/media/scholen1.jpg": "/startprojecten.be/static/media/scholen1.3ebe07cf.jpg",
     "static/media/schoolverlaters1.jpg": "/startprojecten.be/static/media/schoolverlaters1.84d01825.jpg",
+    "static/media/startprojecten.png": "/startprojecten.be/static/media/startprojecten.7ced3bb7.png",
     "static/media/werkervaring1.jpg": "/startprojecten.be/static/media/werkervaring1.47f47c55.jpg"
   }
 }
