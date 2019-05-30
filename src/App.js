@@ -28,10 +28,12 @@ export default class App extends Component {
           images={logo}
           alts="STARTPROjecten"
           imageStyle={{
+            ...style,
             position: "absolute",
             zIndex: -5,
+            height: "auto",
             top: 0,
-            left: 0,
+            right: 0,
             objectFit: "contain"
           }}
         />

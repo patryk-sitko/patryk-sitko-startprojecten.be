@@ -4,7 +4,8 @@ import "./css/Menu.default.css";
 
 export default class Menu extends React.Component {
   state = {
-    anchorTop: false
+    anchorTop: false,
+    lastKnownScrollPosition: 0
   };
 
   render() {
@@ -30,22 +31,33 @@ export default class Menu extends React.Component {
   componentDidUpdate = () => {
     const { anchorTop } = this.state;
     const { style } = this.props;
-    if (
-      !style.width.includes("100%") ||
-      (this.state.boundingBox && this.state.boundingBox.y < 0 && anchorTop)
-    ) {
+    if (!style.width.includes("100%") && anchorTop) {
       menuHandler.bind(this)();
     }
   };
 }
 function menuHandler(event) {
-  const { anchorTop } = this.state;
+  const { anchorTop, lastKnownScrollPosition } = this.state;
+  const currentScrollPosition = window.scrollY;
+  const hideMenu = currentScrollPosition > lastKnownScrollPosition;
   // @ts-ignore
   const boundingBox = ReactDOM.findDOMNode(this).getBoundingClientRect();
-  if (boundingBox.y < 0 && !anchorTop) {
-    this.setState({ anchorTop: true, boundingBox });
-  } else if (boundingBox.y > 0 && anchorTop) {
-    this.setState({ anchorTop: false, boundingBox });
+  if (boundingBox.y < 0 && !anchorTop && !hideMenu) {
+    this.setState({
+      anchorTop: true,
+      lastKnownScrollPosition: currentScrollPosition,
+      boundingBox
+    });
+  } else if ((boundingBox.y > 0 && anchorTop) || hideMenu) {
+    this.setState({
+      anchorTop: false,
+      lastKnownScrollPosition: currentScrollPosition,
+      boundingBox
+    });
+  } else {
+    this.setState({
+      lastKnownScrollPosition: currentScrollPosition
+    });
   }
 }
 // works until 542 width

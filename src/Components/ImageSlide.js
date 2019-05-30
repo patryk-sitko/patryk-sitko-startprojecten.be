@@ -23,7 +23,6 @@ export default class ImgSlide extends Component {
     let image;
     let alt;
     if (typeof images === "string") {
-      console.log(typeof images);
       image = images;
     } else {
       image = images[current];
