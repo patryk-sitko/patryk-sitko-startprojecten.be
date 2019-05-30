@@ -13,18 +13,8 @@ export default class ImgSlide extends Component {
     if (this.props.effects && this.props.effects.fadeOnLoad) {
       this.setState({ style: { opacity: 0.1 } });
     }
-    window.addEventListener(
-      "onfocus",
-      function() {
-        this.setState({ focused: true });
-      }.bind(this)
-    );
-    window.addEventListener(
-      "onblur",
-      function() {
-        this.setState({ focused: false });
-      }.bind(this)
-    );
+    window.onfocus=()=> this.setState({ focused: true });
+    window.onblur=() =>this.setState({ focused: false });
   };
   render() {
     const { images, alts } = this.props;
@@ -66,52 +56,89 @@ export default class ImgSlide extends Component {
     );
   }
   componentDidMount = () => {
-    if (
-      this.props.effects &&
-      this.props.effects.fadeOnLoad &&
-      !this.state.fadedOnLoad
-    ) {
-      const fadeOnLoad = setInterval(() => {
-        if (this.state.focused) {
-          trackInterval.bind(this)("fadeOnLoad", fadeOnLoad);
-          let opacity = this.state.style.opacity;
-          if (opacity > 1) {
-            this.setState({
-              fadedOnLoad: true,
-              intervals: clearIntervalNamed.bind(this)("fadeOnLoad")
-            });
-          } else {
-            this.setState({
-              style: { opacity: opacity + 0.1 }
-            });
-          }
-        }
-      }, this.props.effects.fadeOnLoad);
-    }
-    if (
-      this.props.images &&
-      this.props.images.length > 1 &&
-      this.props.refresh &&
-      !intervalIsTracked.bind(this)("changeImage")
-    ) {
-      const changeImage = setInterval(() => {
-        if (!intervalIsTracked.bind(this)("changeImage")) {
-          trackInterval.bind(this)("changeImage", changeImage);
-        }
-        if (this.state.focused) {
-          if (!this.props.effects || !this.props.effects.fadeTransition) {
-            changeForegroundImage.bind(this)();
-          } else {
-            imageFadeTransition.bind(this)();
-          }
-        }
-      }, this.props.refresh);
-    }
+    imageFadeOnLoad.bind(this)();
+    startChangeImageLoop.bind(this)();
   };
   componentWillUnmount() {
     clearAllIntervals.bind(this)();
   }
 }
+function imageFadeOnLoad(){
+  if (
+    this.props.effects &&
+    this.props.effects.fadeOnLoad &&
+    !this.state.fadedOnLoad
+  ) {
+    const fadeOnLoad = setInterval(() => {
+      if (this.state.focused) {
+        trackInterval.bind(this)("fadeOnLoad", fadeOnLoad);
+        let opacity = this.state.style.opacity;
+        if (opacity > 1) {
+          this.setState({
+            fadedOnLoad: true,
+            intervals: clearIntervalNamed.bind(this)("fadeOnLoad")
+          });
+        } else {
+          this.setState({
+            style: { opacity: opacity + 0.1 }
+          });
+        }
+      }
+    }, this.props.effects.fadeOnLoad);
+  }
+}
+function imageFadeTransition(state = {}) {
+  if (!intervalIsTracked.bind(this)("fadeTransition")) {
+    const fadeTransition = setInterval(() => {
+      if (!intervalIsTracked.bind(this)("fadeTransition")) {
+        trackInterval.bind(this)("fadeTransition", fadeTransition);
+      }
+      switch (this.state.fadeTransitionStage) {
+        case 0:
+          imageFadeOut.bind(this)({ fadeTransitionStage: 1 });
+          break;
+        case 1:
+          changeForegroundImage.bind(this)({ fadeTransitionStage: 2 });
+          break;
+        case 2:
+          imageFadeIn.bind(this)({ fadeTransitionStage: 3 });
+          break;
+        case 3:
+          changeBackgroundImage.bind(this)({ fadeTransitionStage: 4 });
+          break;
+          default:
+            break;
+      }
+      if (this.state.fadeTransitionStage === 4) {
+        this.setState({
+          ...state,
+          intervals: clearIntervalNamed.bind(this)("fadeTransition"),
+          fadeTransitionStage: 0
+        });
+      }
+    }, this.props.effects.fadeTransition);
+  }
+}
+function startChangeImageLoop(){
+  if (
+    this.props.images &&
+    this.props.images.length > 1 &&
+    this.props.refresh &&
+    !intervalIsTracked.bind(this)("changeImage")
+  ) {
+    const changeImage = setInterval(() => {
+      if (!intervalIsTracked.bind(this)("changeImage")) {
+        trackInterval.bind(this)("changeImage", changeImage);
+      }
+      if (this.state.focused) {
+        if (!this.props.effects || !this.props.effects.fadeTransition) {
+          changeForegroundImage.bind(this)();
+        } else {
+          imageFadeTransition.bind(this)();
+        }
+      }
+    }, this.props.refresh);
+  }}
 function changeForegroundImage(state = {}) {
   const { current } = this.state;
   const reset = this.props.images.length - 1;
@@ -146,38 +173,6 @@ function changeBackgroundImage(state = {}) {
       currentBackground: 0,
       opacity
     });
-  }
-}
-function imageFadeTransition(state = {}) {
-  if (!intervalIsTracked.bind(this)("fadeTransition")) {
-    const fadeTransition = setInterval(() => {
-      if (!intervalIsTracked.bind(this)("fadeTransition")) {
-        trackInterval.bind(this)("fadeTransition", fadeTransition);
-      }
-      switch (this.state.fadeTransitionStage) {
-        case 0:
-          imageFadeOut.bind(this)({ fadeTransitionStage: 1 });
-          break;
-        case 1:
-          changeForegroundImage.bind(this)({ fadeTransitionStage: 2 });
-          break;
-        case 2:
-          imageFadeIn.bind(this)({ fadeTransitionStage: 3 });
-          break;
-        case 3:
-          changeBackgroundImage.bind(this)({ fadeTransitionStage: 4 });
-          break;
-          default:
-            break;
-      }
-      if (this.state.fadeTransitionStage === 4) {
-        this.setState({
-          ...state,
-          intervals: clearIntervalNamed.bind(this)("fadeTransition"),
-          fadeTransitionStage: 0
-        });
-      }
-    }, this.props.effects.fadeTransition);
   }
 }
 function imageFadeOut(state = {}) {
