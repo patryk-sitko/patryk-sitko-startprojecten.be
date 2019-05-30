@@ -13,8 +13,8 @@ export default class ImgSlide extends Component {
     if (this.props.effects && this.props.effects.fadeOnLoad) {
       this.setState({ style: { opacity: 0.1 } });
     }
-    window.onfocus=()=> this.setState({ focused: true });
-    window.onblur=() =>this.setState({ focused: false });
+    window.onfocus = () => this.setState({ focused: true });
+    window.onblur = () => this.setState({ focused: false });
   };
   render() {
     const { images, alts } = this.props;
@@ -22,21 +22,22 @@ export default class ImgSlide extends Component {
     let { style } = this.state;
     let image;
     let alt;
-    if (images.constructor.name !== "Array") {
+    if (typeof images === "string") {
+      console.log(typeof images);
       image = images;
     } else {
       image = images[current];
-        const imageBackground =
-          images[currentBackground ? currentBackground : current];
-        style = {
-          objectFit: "contain",
-          backgroundImage: `url(${imageBackground})`,
-          textAlign: "center",
-          backgroundSize: "contain",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-          ...style
-        };
+      const imageBackground =
+        images[currentBackground ? currentBackground : current];
+      style = {
+        objectFit: "contain",
+        backgroundImage: `url(${imageBackground})`,
+        textAlign: "center",
+        backgroundSize: "contain",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        ...style
+      };
     }
     if (alts.constructor.name !== "Array") {
       alt = alts;
@@ -50,7 +51,7 @@ export default class ImgSlide extends Component {
           src={image}
           alt={alt}
           className="image-slide"
-          style={style}
+          style={{...style,...this.props.imageStyle}}
         />
       </div>
     );
@@ -63,7 +64,7 @@ export default class ImgSlide extends Component {
     clearAllIntervals.bind(this)();
   }
 }
-function imageFadeOnLoad(){
+function imageFadeOnLoad() {
   if (
     this.props.effects &&
     this.props.effects.fadeOnLoad &&
@@ -106,8 +107,8 @@ function imageFadeTransition(state = {}) {
         case 3:
           changeBackgroundImage.bind(this)({ fadeTransitionStage: 4 });
           break;
-          default:
-            break;
+        default:
+          break;
       }
       if (this.state.fadeTransitionStage === 4) {
         this.setState({
@@ -119,7 +120,7 @@ function imageFadeTransition(state = {}) {
     }, this.props.effects.fadeTransition);
   }
 }
-function startChangeImageLoop(){
+function startChangeImageLoop() {
   if (
     this.props.images &&
     this.props.images.length > 1 &&
@@ -138,7 +139,8 @@ function startChangeImageLoop(){
         }
       }
     }, this.props.refresh);
-  }}
+  }
+}
 function changeForegroundImage(state = {}) {
   const { current } = this.state;
   const reset = this.props.images.length - 1;

@@ -4,6 +4,7 @@ import ImageSlide from "./Components/ImageSlide";
 import slide from "./slideBanner";
 import Router from "./Components/Router";
 import "./App.css";
+import logo from "./images/startprojecten.png";
 
 export default class App extends Component {
   state = {
@@ -23,6 +24,17 @@ export default class App extends Component {
         // @ts-ignore
         style={style}
       >
+        <ImageSlide
+          images={logo}
+          alts="STARTPROjecten"
+          imageStyle={{
+            position: "absolute",
+            zIndex: -5,
+            top: 0,
+            left: 0,
+            objectFit: "contain"
+          }}
+        />
         <ImageSlide
           images={slide.images}
           alts={slide.alts}
