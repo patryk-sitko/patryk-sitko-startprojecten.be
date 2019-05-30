@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "491accfab8588cd672ac767ec1437cf1",
+    "revision": "68e266365e92df0cf018f34e71066c84",
     "url": "/startprojecten.be/index.html"
   },
   {
-    "revision": "41cd17b1a54921d00d1f",
+    "revision": "5e26c545b7dead54dfc9",
     "url": "/startprojecten.be/static/css/main.e8274e93.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/startprojecten.be/static/js/2.068efe7b.chunk.js"
   },
   {
-    "revision": "41cd17b1a54921d00d1f",
-    "url": "/startprojecten.be/static/js/main.815d1e99.chunk.js"
+    "revision": "5e26c545b7dead54dfc9",
+    "url": "/startprojecten.be/static/js/main.3eafa7de.chunk.js"
   },
   {
     "revision": "61f968a298a7112df320",
@@ -28,24 +28,24 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/startprojecten.be/static/media/default-cursor.d478db4a.png"
   },
   {
-    "revision": "f6027e2f6121b84ff033b4ebab261900",
-    "url": "/startprojecten.be/static/media/kleine-head3.f6027e2f.jpg"
+    "revision": "d8a82a3fc6fdd4494b460f3a8e995f2e",
+    "url": "/startprojecten.be/static/media/kleine-head3.d8a82a3f.png"
   },
   {
-    "revision": "a878e9053276e53140fa6f509cf59311",
-    "url": "/startprojecten.be/static/media/kleine-head4.a878e905.jpg"
+    "revision": "86e23cc7d5322c7ebf5c61351ddc4572",
+    "url": "/startprojecten.be/static/media/kleine-head4.86e23cc7.png"
   },
   {
-    "revision": "4268a026a1885f654b1eeda33b367e30",
-    "url": "/startprojecten.be/static/media/kleine-head5.4268a026.jpg"
+    "revision": "b768a0bd32810cdbd2bafa90d1e3614a",
+    "url": "/startprojecten.be/static/media/kleine-head5.b768a0bd.png"
   },
   {
-    "revision": "d44adea29236e73a0d0cd28c8881b315",
-    "url": "/startprojecten.be/static/media/kleine-head6.d44adea2.jpg"
+    "revision": "a8a78d51ce2b2a3e85577599840732e4",
+    "url": "/startprojecten.be/static/media/kleine-head6.a8a78d51.png"
   },
   {
-    "revision": "a953e8f9ebb7ee74bff58d003c2eb368",
-    "url": "/startprojecten.be/static/media/kleine-head7.a953e8f9.jpg"
+    "revision": "26edbaf0b472da593b1ce29c87f5d5e3",
+    "url": "/startprojecten.be/static/media/kleine-head7.26edbaf0.png"
   },
   {
     "revision": "b4529b5bdb659e63d42ee4dd20d71d86",
